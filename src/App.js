@@ -1,25 +1,26 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
-import './App.css';
+import './App.scss';
 
-class App extends Component {
+class App extends Component {  
+  submitHandler(e) {
+    e.preventDefault()
+    console.log('-----')
+  }
+
   render() {
     return (
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
+          <span>React-Express Form Handler</span>
         </header>
+        <form className="user-form" onSubmit={this.submitHandler}>
+          <div className="form-field">
+            <label htmlFor="title">Title</label>
+            <input type="text" id="title" name="title" placeholder="e.g. Dr, Mrs, Mr, Ms" required></input>
+          </div>
+        </form>
+        <button type="submit">Submit</button>        
       </div>
     );
   }

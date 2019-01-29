@@ -2,6 +2,14 @@ import React, { Component } from 'react';
 import PageOne from './components/PageOne'
 import PageTwo from './components/PageTwo'
 import './App.scss';
+import { 
+  TITLE,
+  NAME,
+  DOB,
+  CURRENT_LOCATION,
+  CURRENT_DATE_TIME,
+  USER_FEEDBACK
+} from './constants'
 
 class App extends Component {  
   constructor(props) {
@@ -11,56 +19,13 @@ class App extends Component {
       name: '',
       dob: '',
       currentLoc: '',
-      currentDateTime: '',
+      currentDateTime: new Date(),
       userFeedback: ''
     }
 
     this.submitHandler = this.submitHandler.bind(this)
     this.handleFieldChange = this.handleFieldChange.bind(this)
-  }  
-  submitHandler(e) {
-    e.preventDefault()
-    const user = JSON.stringify(this.state)
-    console.log(`${user}`)
   }
-
-  handleFieldChange(field, value) {
-    console.log(`field : ${field}, value: ${value}`)
-    switch (field) {
-      case 'title':
-        this.setState({ title: value})
-        break
-      case 'name':
-        this.setState({ name: value})
-        break
-      case 'dob':
-        this.setState({ dob: value})
-        break
-      case 'currentLoc':
-        this.setState({ currentLoc: value})
-        break
-      case 'currentDateTime':
-        this.setState({ currentDateTime: value})
-        break        
-      case 'userFeedback':
-        this.setState({ userFeedback: value})
-        break        
-      default:
-        break
-    }
-    // let newFieldValue = { user : {} }
-    // newFieldValue.user[field] = value
-    // this.setState(newFieldValue)
-  }
-
-  pageTwoReady() {
-    if (this.state.title.length && this.state.name.length && this.state.dob.length) {
-      return true
-    } else {
-      return false
-    }
-  }
-
   render() {
     return (
       <div className="App">
@@ -89,11 +54,77 @@ class App extends Component {
             </span>
           </div>
           <div className="form-controls">
-            <button type="submit">Submit</button>        
+            {
+              this.pageTwoReady() ?
+                <button type="submit">Submit</button> :
+                <div></div>
+            }            
           </div>
         </form>
       </div>
     );
+  }
+
+  submitHandler(e) {
+    e.preventDefault()
+    const user = JSON.stringify(this.state)
+    console.log(`${user}`)
+    const submitUrl = process.env.REACT_APP_SUBMIT_URL
+    const postData = {
+      title: this.state.title,
+      name: this.state.name,
+      dob: this.state.dob,
+      currentLoc: this.state.currentLoc,
+      currentDateTime: this.state.currentDateTime,
+      userFeedback: this.state.userFeedback
+    }
+    fetch(
+      submitUrl, {
+        method: 'POST',
+        body: JSON.stringify(postData),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+    })
+    .then(response => {
+      return response.json()
+    }).then(json => {
+      console.log(JSON.stringify(json))
+    })
+  }
+
+  handleFieldChange(field, value) {
+    console.log(`field : ${field}, value: ${value}`)
+    switch (field) {
+      case TITLE:
+        this.setState({ title: value})
+        break
+      case NAME:
+        this.setState({ name: value})
+        break
+      case DOB:
+        this.setState({ dob: value})
+        break
+      case CURRENT_LOCATION:
+        this.setState({ currentLoc: value})
+        break
+      case CURRENT_DATE_TIME:
+        this.setState({ currentDateTime: value})
+        break        
+      case USER_FEEDBACK:
+        this.setState({ userFeedback: value})
+        break        
+      default:
+        break
+    }
+  }
+
+  pageTwoReady() {
+    if (this.state.title.length && this.state.name.length && this.state.dob.length) {
+      return true
+    } else {
+      return false
+    }
   }
 }
 

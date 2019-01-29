@@ -1,11 +1,14 @@
 const express = require('express')
 const bodyParser = require('body-parser')
+const cors = require('cors')
 const app = express()
-const port = 3000
+const port = 3333
 
 app.use(express.static('backend'))
 app.use(bodyParser.json())
-app.post('/submitsurvey', (req, res, next) =>  {
+app.use(cors())
+
+app.post('/submitsurvey', (req, res) =>  {
   const { title, name, dob, currentLoc, currentDateTime, userFeedback } = req.body
   console.log('----------')
   console.log(`Title: ${title}`)
@@ -14,6 +17,7 @@ app.post('/submitsurvey', (req, res, next) =>  {
   console.log(`Current Location: ${currentLoc}`)
   console.log(`Current Date/Time: ${currentDateTime}`)
   console.log(`Feedback: ${userFeedback}`)
+  console.log('===========')
   res.status(200).send({ success: true})
 })
 

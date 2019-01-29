@@ -1,5 +1,10 @@
 import React, { Component } from 'react'
 import './PageOne.scss'
+import { 
+  TITLE,
+  NAME,
+  DOB
+} from '../constants'
 
 class PageOne extends Component {
   render() {
@@ -20,27 +25,43 @@ class PageOne extends Component {
 
           <div className="form-field">
             <label htmlFor="name">Name*</label>
-            <input type="text" id="name" name="name" placeholder="" value={this.props.name || ''} onChange={this.handleNameChange.bind(this)} required></input>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              placeholder=""
+              value={this.props.name || ''}
+              onChange={this.handleNameChange.bind(this)}
+              required>
+            </input>
           </div>
 
           <div className="form-field">
             <label htmlFor="dob">Date of Birth*</label>
-            <input type="text" id="dob" name="dob" placeholder="" value={this.props.dob || ''} onChange={this.handleDobChange.bind(this)} required></input>
+            <input
+              type="date"
+              id="dob"
+              name="dob"
+              placeholder=""
+              value={this.props.dob || ''}
+              onChange={this.handleDobChange.bind(this)}
+              required
+            ></input>
           </div>
       </div>
     )
   }
   
   handleTitleChange(e) {
-    this.props.handleFieldChange('title', e.currentTarget.value)
+    this.props.handleFieldChange(TITLE, e.currentTarget.value)
   }
 
   handleNameChange(e) {
-    this.props.handleFieldChange('name', e.currentTarget.value)
+    this.props.handleFieldChange(NAME, e.currentTarget.value)
   }
   
   handleDobChange(e) {
-    this.props.handleFieldChange('dob', e.currentTarget.value)
+    this.props.handleFieldChange(DOB, e.currentTarget.value)
   }  
 }
 

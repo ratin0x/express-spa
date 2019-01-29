@@ -1,5 +1,10 @@
 import React, { Component } from 'react'
 import './PageTwo.scss'
+import { 
+  CURRENT_LOCATION,
+  CURRENT_DATE_TIME,
+  USER_FEEDBACK
+} from '../constants'
 
 class PageTwo extends Component {
   render() {
@@ -13,32 +18,31 @@ class PageTwo extends Component {
               name="currentLoc" 
               placeholder="Current Location (e.g. Bristol)" 
               value={this.props.currentLoc || ''} 
-              onChange={this.handleLocationChange.bind(this)}
-              required>
+              onChange={this.handleLocationChange.bind(this)}>
             </input>
           </div>
+
           <div className="form-field">
             <label htmlFor="currentDateTime">Date</label>
             <input 
-              type="text"
+              type="datetime"
               id="currentDateTime"
               name="currentDateTime"
               placeholder="currentDateTime"
               value={this.props.currentDateTime || ''} 
-              onChange={this.handleDateTimeChange.bind(this)}
-              required>
+              onChange={this.handleDateTimeChange.bind(this)}>
             </input>
           </div>
+          
           <div className="form-field">
-            <label htmlFor="userFeedback">Feeback</label>
+            <label htmlFor="userFeedback">Feedback</label>
             <input
               type="textarea"
               id="userFeedback"
               name="userFeedback"
               placeholder="Feedback"
               value={this.props.userFeedback || ''} 
-              onChange={this.handleFeedbackChange.bind(this)}              
-              required>
+              onChange={this.handleFeedbackChange.bind(this)}>
             </input>
           </div>          
       </div>
@@ -46,17 +50,16 @@ class PageTwo extends Component {
   }
 
   handleLocationChange(e) {
-    this.props.handleFieldChange('currentLoc', e.currentTarget.value)
+    this.props.handleFieldChange(CURRENT_LOCATION, e.currentTarget.value)
   }
 
   handleDateTimeChange(e) {
-    this.props.handleFieldChange('currentDateTime', e.currentTarget.value)
+    this.props.handleFieldChange(CURRENT_DATE_TIME, e.currentTarget.value)
   }
   
   handleFeedbackChange(e) {
-    this.props.handleFieldChange('userFeedback', e.currentTarget.value)
+    this.props.handleFieldChange(USER_FEEDBACK, e.currentTarget.value)
   }  
-
 }
 
 export default PageTwo

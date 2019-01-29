@@ -4,6 +4,8 @@ const cors = require('cors')
 const app = express()
 const port = 3333
 
+// This is the destination of the 'npm copy' and npm deploy' tasks,
+// containing the built React SPA
 app.use(express.static('backend'))
 app.use(bodyParser.json())
 app.use(cors())

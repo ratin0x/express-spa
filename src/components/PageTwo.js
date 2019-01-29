@@ -6,12 +6,17 @@ import {
   USER_FEEDBACK
 } from '../constants'
 
+/**
+ * Form page containing non-required elements
+ */
 class PageTwo extends Component {
   render() {
     return (
       <div className="form-page-two">
           <div className="form-field">
-            <label htmlFor="currentLoc">Loc</label>
+            <div className="label">
+              <label htmlFor="currentLoc">Location</label>
+            </div>
             <input 
               type="text" 
               id="currentLoc" 
@@ -23,7 +28,9 @@ class PageTwo extends Component {
           </div>
 
           <div className="form-field">
-            <label htmlFor="currentDateTime">Date</label>
+            <div className="label">
+              <label htmlFor="currentDateTime">Date and Time</label>
+            </div>
             <input 
               type="datetime-local"
               id="currentDateTime"
@@ -35,9 +42,10 @@ class PageTwo extends Component {
           </div>
 
           <div className="form-field">
-            <label htmlFor="userFeedback">Feedback</label>
+            <div className="label">
+              <label htmlFor="userFeedback">Feedback</label>
+            </div>
             <textarea
-              // type="textarea"
               rows="3"
               id="userFeedback"
               name="userFeedback"

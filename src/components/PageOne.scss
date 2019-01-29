@@ -1,0 +1,9 @@
+@media only screen 
+and (min-device-width : 375px) { 
+  .form-page-one {
+    margin: 1px 1px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+}

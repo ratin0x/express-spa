@@ -19,8 +19,10 @@ class App extends Component {
       name: '',
       dob: '',
       currentLoc: '',
-      currentDateTime: new Date(),
-      userFeedback: ''
+      currentDateTime: '',
+      userFeedback: '',
+      submitted: false,
+      sumbittedMessage: ''
     }
 
     this.submitHandler = this.submitHandler.bind(this)
@@ -61,14 +63,19 @@ class App extends Component {
             }            
           </div>
         </form>
+        <div className="submitMessage">
+          {
+            (this.state.submitted) ? 
+              <div>Thank you for your submission!</div> :
+              <div></div>              
+          }
+        </div>
       </div>
     );
   }
 
   submitHandler(e) {
     e.preventDefault()
-    const user = JSON.stringify(this.state)
-    console.log(`${user}`)
     const submitUrl = process.env.REACT_APP_SUBMIT_URL
     const postData = {
       title: this.state.title,
@@ -89,12 +96,17 @@ class App extends Component {
     .then(response => {
       return response.json()
     }).then(json => {
-      console.log(JSON.stringify(json))
+      this.setState({submitted: true})
+    }).catch( error => {
+      console.error(error)
     })
   }
 
   handleFieldChange(field, value) {
-    console.log(`field : ${field}, value: ${value}`)
+    if (this.state.submitted) {
+      this.setState({submitted: false})      
+    }
+
     switch (field) {
       case TITLE:
         this.setState({ title: value})

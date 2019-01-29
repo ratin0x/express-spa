@@ -25,7 +25,7 @@ class PageTwo extends Component {
           <div className="form-field">
             <label htmlFor="currentDateTime">Date</label>
             <input 
-              type="datetime"
+              type="datetime-local"
               id="currentDateTime"
               name="currentDateTime"
               placeholder="currentDateTime"
@@ -33,17 +33,18 @@ class PageTwo extends Component {
               onChange={this.handleDateTimeChange.bind(this)}>
             </input>
           </div>
-          
+
           <div className="form-field">
             <label htmlFor="userFeedback">Feedback</label>
-            <input
-              type="textarea"
+            <textarea
+              // type="textarea"
+              rows="3"
               id="userFeedback"
               name="userFeedback"
               placeholder="Feedback"
               value={this.props.userFeedback || ''} 
               onChange={this.handleFeedbackChange.bind(this)}>
-            </input>
+            </textarea>
           </div>          
       </div>
     )

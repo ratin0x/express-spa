@@ -11,7 +11,9 @@ class PageOne extends Component {
     return (
       <div className="form-page-one">
           <div className="form-field">
-            <label htmlFor="title">Title*</label>
+            <div className="label">
+              <label htmlFor="title">Title*</label>
+            </div>
             <input
               type="text"
               id="title"
@@ -24,7 +26,9 @@ class PageOne extends Component {
           </div>
 
           <div className="form-field">
-            <label htmlFor="name">Name*</label>
+            <div className="label">
+              <label htmlFor="name">Name*</label>
+            </div>
             <input
               type="text"
               id="name"
@@ -37,7 +41,9 @@ class PageOne extends Component {
           </div>
 
           <div className="form-field">
-            <label htmlFor="dob">Date of Birth*</label>
+            <div className="label">
+              <label htmlFor="dob">Date of Birth*</label>
+            </div>
             <input
               type="date"
               id="dob"

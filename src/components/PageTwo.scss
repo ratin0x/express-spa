@@ -1,6 +1,9 @@
-.form-page-two {
-  margin: 1px 1px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start;
+@media only screen 
+and (min-device-width : 375px) {
+  .form-page-two {
+    margin: 1px 1px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
 }

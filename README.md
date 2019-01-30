@@ -10,6 +10,15 @@ This project supplies an `.nvmrc` file for use with [Node Version Manager](https
 
 `npm start` will build and run the project.
 
+## Environment
+
+This project requires an environment variable that can be set directly or supplied via an .env file in the root of the project.
+
+Sample .env file configuration:
+```
+REACT_APP_SUBMIT_URL=http://localhost:3333/submitsurvey
+```
+
 ## Available Scripts
 
 In the project directory, you can run:

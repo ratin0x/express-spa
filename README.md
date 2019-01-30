@@ -1,5 +1,14 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), uses the built-in SASS preprocessor and is bundled for deployment by Webpack.
 
+## Installation
+
+This project supplies an `.nvmrc` file for use with [Node Version Manager](https://github.com/creationix/nvm).
+
+`nvm use` at the root of the project will ensure you are using the correct NodeJS and NPM versions for the project.
+
+`npm install` will install project dependencies, and
+
+`npm start` will build and run the project.
 
 ## Available Scripts
 
@@ -24,7 +33,6 @@ You will also see any lint errors in the console.
 ### `npm test`
 
 Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
 ### `npm run build`
 

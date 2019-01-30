@@ -10,7 +10,9 @@ import {
   CURRENT_DATE_TIME,
   USER_FEEDBACK
 } from './constants'
-
+/**
+ * Simple app to display a two-stage form and submit to the url supplied by the environment.
+ */
 class App extends Component {  
   constructor(props) {
     super(props)
@@ -30,8 +32,8 @@ class App extends Component {
   }
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
+      <div className="app">
+        <header className="app-header">
           <span>React-Express Form Handler</span>
         </header>
         <form className="user-form" onSubmit={this.submitHandler}>
@@ -103,6 +105,7 @@ class App extends Component {
   }
 
   handleFieldChange(field, value) {
+    // Reset the submitted state of the form if any of the fields change.
     if (this.state.submitted) {
       this.setState({submitted: false})      
     }

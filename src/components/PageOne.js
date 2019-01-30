@@ -6,13 +6,16 @@ import {
   DOB
 } from '../constants'
 
+/**
+ * Form page containing required elements
+ */
 class PageOne extends Component {
   render() {
     return (
       <div className="form-page-one">
           <div className="form-field">
             <div className="label">
-              <label htmlFor="title">Title*</label>
+              <label htmlFor="title">Title<sup><small>*</small></sup></label>
             </div>
             <input
               type="text"
@@ -27,7 +30,7 @@ class PageOne extends Component {
 
           <div className="form-field">
             <div className="label">
-              <label htmlFor="name">Name*</label>
+              <label htmlFor="name">Name<sup><small>*</small></sup></label>
             </div>
             <input
               type="text"
@@ -42,7 +45,7 @@ class PageOne extends Component {
 
           <div className="form-field">
             <div className="label">
-              <label htmlFor="dob">Date of Birth*</label>
+              <label htmlFor="dob">Date of Birth<sup><small>*</small></sup></label>
             </div>
             <input
               type="date"

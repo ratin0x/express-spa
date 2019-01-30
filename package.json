@@ -31,6 +31,8 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "cpx": "^1.5.0"
+    "cpx": "^1.5.0",
+    "jest-dom": "^3.0.1",
+    "react-testing-library": "^5.4.4"
   }
 }
